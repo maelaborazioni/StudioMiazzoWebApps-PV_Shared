@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_richiestedettagliocondizioni",
+items:[
+{foreignColumnName:"idtabrichiestadettagliocondizione",operator:0,primaryDataProviderID:"idtabrichiestadettagliocondizione",typeid:23,uuid:"2B44E665-DE45-4407-B3C0-41AC65150E06"}
+],
+joinType:1,
+name:"tab_richiestedettagliocondizionicampi_to_tab_richiestedettagliocondizioni",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettagliocondizionicampi",
+typeid:22,
+uuid:"2CACFFFA-E04A-4A2E-8F46-A02BE2DE6C72"

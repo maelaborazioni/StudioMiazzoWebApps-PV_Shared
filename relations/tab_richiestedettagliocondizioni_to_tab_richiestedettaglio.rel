@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_richiestedettaglio",
+items:[
+{foreignColumnName:"idtabrichiestadettaglio",operator:0,primaryDataProviderID:"idtabrichiestadettaglio",typeid:23,uuid:"49F5EEF5-C5FC-4AC6-BDA4-40C43EA0854E"}
+],
+joinType:1,
+name:"tab_richiestedettagliocondizioni_to_tab_richiestedettaglio",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettagliocondizioni",
+typeid:22,
+uuid:"7AFEE59A-9306-4F1A-993E-F92EAB81A8D9"

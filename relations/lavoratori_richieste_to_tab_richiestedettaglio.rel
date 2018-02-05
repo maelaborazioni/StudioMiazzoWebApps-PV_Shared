@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_richiestedettaglio",
+items:[
+{foreignColumnName:"idtabrichiestadettaglio",operator:0,primaryDataProviderID:"idtabrichiestadettaglio",typeid:23,uuid:"067C4760-D5DE-4DEA-BC06-AD67DE3130BE"}
+],
+joinType:1,
+name:"lavoratori_richieste_to_tab_richiestedettaglio",
+primaryDataSource:"db:/ma_richieste/lavoratori_richieste",
+typeid:22,
+uuid:"C2E5E7B8-7BF7-49E8-AD66-CBF289220586"

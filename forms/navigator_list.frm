@@ -1,0 +1,14 @@
+dataSource:"db:/ma_richieste/tab_richiestedettagliocondizioni",
+extendsID:"A56CF64D-C032-494B-86DC-92019E9D859D",
+items:[
+{
+height:480,
+partType:5,
+typeid:19,
+uuid:"532ACD34-1FE1-46B5-9C5D-FD0D93128364"
+}
+],
+name:"navigator_list",
+size:"125,480",
+typeid:3,
+uuid:"8AD73A9E-3D17-4019-B82A-7DF098F816F1"

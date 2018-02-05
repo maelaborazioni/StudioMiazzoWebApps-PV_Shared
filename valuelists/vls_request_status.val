@@ -1,0 +1,10 @@
+addEmptyValue:1,
+dataProviderID1:"descrizione",
+dataProviderID2:"idtabstatooperazione",
+dataSource:"db:/ma_richieste/tab_statooperazioni",
+name:"vls_request_status",
+returnDataProviders:2,
+showDataProviders:1,
+typeid:34,
+uuid:"5CAECB7B-8B3D-4F45-9C00-49FB11F83A0D",
+valueListType:1

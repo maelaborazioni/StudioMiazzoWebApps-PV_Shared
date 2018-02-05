@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_tipivisualizzazione",
+items:[
+{foreignColumnName:"idtabtipovisualizzazione",operator:0,primaryDataProviderID:"idtabtipovisualizzazione",typeid:23,uuid:"2D194861-469E-4467-883A-B60D54515C9D"}
+],
+joinType:1,
+name:"tab_richiestedettagliocondizionicampi_to_tab_tipivisualizzazione",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettagliocondizionicampi",
+typeid:22,
+uuid:"BB887F4F-5341-4E6D-A80D-5968989A3BEE"

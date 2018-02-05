@@ -1,0 +1,11 @@
+allowCreationRelatedRecords:false,
+deleteRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/lavoratori_richieste",
+items:[
+{foreignColumnName:"idlavoratorerichiesta",operator:0,primaryDataProviderID:"rettificaper",typeid:23,uuid:"CA0EA3DF-9DB4-475E-AB1E-286DA5DDBA5A"}
+],
+joinType:1,
+name:"lavoratori_richieste_to_lavoratori_richieste_rettificate",
+primaryDataSource:"db:/ma_richieste/lavoratori_richieste",
+typeid:22,
+uuid:"ACD52CF7-BD0A-453B-86CE-D65B74531654"

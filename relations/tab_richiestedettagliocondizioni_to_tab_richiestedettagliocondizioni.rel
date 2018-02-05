@@ -1,0 +1,7 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_richiestedettagliocondizioni",
+joinType:1,
+name:"tab_richiestedettagliocondizioni_to_tab_richiestedettagliocondizioni",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettagliocondizioni",
+typeid:22,
+uuid:"6E3C189C-B090-4C32-89D5-1D9ACC6776B0"

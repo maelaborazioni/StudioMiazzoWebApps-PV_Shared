@@ -1,0 +1,12 @@
+addEmptyValue:0,
+customValues:null,
+dataProviderID1:"descrizione",
+dataProviderID2:"iddittapresenzegruppigestione",
+dataSource:null,
+name:"vls_gruppolavoratori_richieste",
+relationName:"ditte_to_ditte_presenzegruppigestione_richieste",
+returnDataProviders:2,
+showDataProviders:1,
+typeid:34,
+uuid:"8909B17D-0562-42D0-895C-5BF85D3EF966",
+valueListType:1

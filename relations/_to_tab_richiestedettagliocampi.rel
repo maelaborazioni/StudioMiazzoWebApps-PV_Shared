@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_richiestedettagliocampi",
+items:[
+{foreignColumnName:"idtabrichiestadettagliocampo",operator:0,primaryDataProviderID:"globals.ma_pv_to_tab_richiestedettagliocampi_valoriadipendente$idcampo",typeid:23,uuid:"5D60F2F5-8066-48F7-9819-5A217B3FDC5E"}
+],
+joinType:1,
+name:"_to_tab_richiestedettagliocampi",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettagliocampi",
+typeid:22,
+uuid:"8AF600E1-1EE6-4E43-80F5-3791869418AD"

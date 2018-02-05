@@ -1,0 +1,11 @@
+allowCreationRelatedRecords:true,
+deleteRelatedRecords:true,
+foreignDataSource:"db:/ma_richieste/lavoratori_richieste",
+items:[
+{foreignColumnName:"owner_id",operator:0,primaryDataProviderID:"globals.svy_sec_lgn_owner_id",typeid:23,uuid:"1A367D6A-AA35-4FAA-94FE-42E5C357F472"}
+],
+joinType:1,
+name:"_to_lavoratori_richieste",
+primaryDataSource:"db:/svy_framework/sec_user",
+typeid:22,
+uuid:"F44B32FB-0029-4923-AA40-A42CB111642F"

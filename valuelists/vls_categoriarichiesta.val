@@ -1,0 +1,13 @@
+addEmptyValue:0,
+customValues:null,
+dataProviderID1:"descrizione",
+dataProviderID2:"idtabrichiesta",
+dataSource:"db:/ma_richieste/tab_richieste",
+name:"vls_categoriarichiesta",
+relationName:null,
+returnDataProviders:2,
+showDataProviders:1,
+sortOptions:"codice asc",
+typeid:34,
+uuid:"FD541200-D3EE-457F-AF43-E11FAAEEF5F8",
+valueListType:1

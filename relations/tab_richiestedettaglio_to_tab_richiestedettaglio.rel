@@ -1,0 +1,8 @@
+allowCreationRelatedRecords:false,
+deleteRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_richiestedettaglio",
+joinType:1,
+name:"tab_richiestedettaglio_to_tab_richiestedettaglio",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettaglio",
+typeid:22,
+uuid:"2728215D-E615-4E64-BB41-67E9780088E1"

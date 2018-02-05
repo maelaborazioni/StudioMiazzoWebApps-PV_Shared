@@ -1,0 +1,9 @@
+addEmptyValue:0,
+customValues:"Valide|1\r
+Non valide|2\r
+Rettificate|3",
+name:"vls_tiporettifica",
+returnDataProviders:1,
+showDataProviders:1,
+typeid:34,
+uuid:"CC976A50-499D-4D70-B089-9ED9F9E15184"

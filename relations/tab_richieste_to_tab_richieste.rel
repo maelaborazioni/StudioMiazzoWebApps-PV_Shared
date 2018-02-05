@@ -1,0 +1,7 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_richieste",
+joinType:1,
+name:"tab_richieste_to_tab_richieste",
+primaryDataSource:"db:/ma_richieste/tab_richieste",
+typeid:22,
+uuid:"1F787AC4-CFCC-444E-8465-06A0E85D1BC8"

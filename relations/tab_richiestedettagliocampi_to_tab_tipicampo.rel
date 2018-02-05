@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_tipicampo",
+items:[
+{foreignColumnName:"idtabtipocampo",operator:0,primaryDataProviderID:"idtabtipocampo",typeid:23,uuid:"4A399496-641C-4B61-B6B4-30456C749147"}
+],
+joinType:1,
+name:"tab_richiestedettagliocampi_to_tab_tipicampo",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettagliocampi",
+typeid:22,
+uuid:"2B138644-D54B-4D34-B85D-C5EE23DDAA45"

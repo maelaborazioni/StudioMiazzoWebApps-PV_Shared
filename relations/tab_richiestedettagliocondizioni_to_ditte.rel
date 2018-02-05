@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_anagrafiche/ditte",
+items:[
+{foreignColumnName:"idditta",operator:0,primaryDataProviderID:"idditta",typeid:23,uuid:"CCB6A3FD-C191-462C-8A9A-9CC583620473"}
+],
+joinType:1,
+name:"tab_richiestedettagliocondizioni_to_ditte",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettagliocondizioni",
+typeid:22,
+uuid:"D780590E-889C-4F9D-A2B5-A3753D654D91"

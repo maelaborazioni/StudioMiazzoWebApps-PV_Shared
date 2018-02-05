@@ -1,0 +1,12 @@
+allowCreationRelatedRecords:false,
+deleteRelatedRecords:false,
+foreignDataSource:"db:/ma_anagrafiche/ditte_presenzegruppigestione",
+items:[
+{foreignColumnName:"idditta",operator:0,primaryDataProviderID:"idditta",typeid:23,uuid:"9F06C2AD-9145-491B-88BE-4EE8EA14C6A4"},
+{foreignColumnName:"richieste",operator:0,primaryDataProviderID:"globals.TRUE",typeid:23,uuid:"C0CDD93A-F5F8-418D-9182-9D82DADFEA24"}
+],
+joinType:1,
+name:"ditte_to_ditte_presenzegruppigestione_richieste",
+primaryDataSource:"db:/ma_anagrafiche/ditte",
+typeid:22,
+uuid:"266F8FFA-F978-405B-A52F-2EEBCB632A65"

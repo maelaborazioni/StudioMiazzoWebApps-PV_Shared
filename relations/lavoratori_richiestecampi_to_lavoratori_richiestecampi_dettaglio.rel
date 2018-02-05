@@ -1,0 +1,12 @@
+allowCreationRelatedRecords:true,
+deleteRelatedRecords:true,
+foreignDataSource:"db:/ma_richieste/lavoratori_richiestecampi_dettaglio",
+items:[
+{foreignColumnName:"idtabrichiestadettagliocampo",primaryDataProviderID:"idtabrichiestadettagliocampo",typeid:23,uuid:"417BDF52-8DFD-47D5-98F9-76B0A6DA52D8"},
+{foreignColumnName:"idlavoratorerichiesta",primaryDataProviderID:"idlavoratorerichiesta",typeid:23,uuid:"A62B826F-9FCB-4317-BE1C-CDE000B9BF7A"}
+],
+joinType:1,
+name:"lavoratori_richiestecampi_to_lavoratori_richiestecampi_dettaglio",
+primaryDataSource:"db:/ma_richieste/lavoratori_richiestecampi",
+typeid:22,
+uuid:"9E185998-9830-4556-A0DC-5D589DB2053F"

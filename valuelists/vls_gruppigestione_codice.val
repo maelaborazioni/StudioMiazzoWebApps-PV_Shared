@@ -1,0 +1,12 @@
+addEmptyValue:0,
+customValues:null,
+dataProviderID1:"codice",
+dataProviderID2:"iddittapresenzegruppigestione",
+dataSource:null,
+name:"vls_gruppigestione_codice",
+relationName:"ditte_to_ditte_presenzegruppigestione",
+returnDataProviders:2,
+showDataProviders:1,
+typeid:34,
+uuid:"EAAFE778-792C-4872-A90F-2F6000B5D299",
+valueListType:1

@@ -1,0 +1,11 @@
+allowCreationRelatedRecords:true,
+foreignDataSource:"db:/ma_richieste/ditte_gestionerichieste",
+items:[
+{foreignColumnName:"idtabrichiestadettaglio",operator:0,primaryDataProviderID:"idtabrichiestadettaglio",typeid:23,uuid:"1641BDBE-E69B-4717-B3A7-2A5ECCB030BA"},
+{foreignColumnName:"idditta",operator:0,primaryDataProviderID:"globals.vCurrentEmployerID",typeid:23,uuid:"AAF49A94-E0EA-4799-93F6-8E8FA1616662"}
+],
+joinType:1,
+name:"tab_richiestedettaglio_to_ditte_gestionerichieste",
+primaryDataSource:"db:/ma_richieste/tab_richiestedettaglio",
+typeid:22,
+uuid:"035C4E28-2198-4800-9CBE-706CB7AC390B"

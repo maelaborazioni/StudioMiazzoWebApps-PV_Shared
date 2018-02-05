@@ -1,0 +1,12 @@
+allowCreationRelatedRecords:true,
+deleteRelatedRecords:true,
+foreignDataSource:"db:/ma_richieste/tab_richiestedettagliocampi_valoriadipendente",
+items:[
+{foreignColumnName:"idlavoratore",operator:0,primaryDataProviderID:"idlavoratore",typeid:23,uuid:"40743CB5-5E16-4418-A69F-2F27A903D8EF"},
+{foreignColumnName:"idtabrichiestadettagliocampo",operator:0,primaryDataProviderID:"globals.ma_pv_to_tab_richiestedettagliocampi_valoriadipendente$idcampo",typeid:23,uuid:"718BEDFE-68C5-4F29-8259-938E45D85C4D"}
+],
+joinType:1,
+name:"lavoratori_to_tab_richiestedettagliocampi_valoriadipendente$idcampo",
+primaryDataSource:"db:/ma_anagrafiche/lavoratori",
+typeid:22,
+uuid:"88AFE3D0-FD0C-4AF4-9D9D-CAEED6326780"

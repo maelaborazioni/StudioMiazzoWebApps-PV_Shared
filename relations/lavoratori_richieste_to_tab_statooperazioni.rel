@@ -1,0 +1,10 @@
+allowCreationRelatedRecords:false,
+foreignDataSource:"db:/ma_richieste/tab_statooperazioni",
+items:[
+{foreignColumnName:"idtabstatooperazione",operator:0,primaryDataProviderID:"idtabstatooperazione",typeid:23,uuid:"24B98127-753A-45C8-A151-1A47BC6F832B"}
+],
+joinType:1,
+name:"lavoratori_richieste_to_tab_statooperazioni",
+primaryDataSource:"db:/ma_richieste/lavoratori_richieste",
+typeid:22,
+uuid:"3B310CEA-8613-4D75-8FA0-8A4A43908569"
