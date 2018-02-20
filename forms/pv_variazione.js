@@ -937,7 +937,7 @@ function getData(specification, params, data)
 			data[lavoratore]['decorrenza'] = params.decorrenza;
 		
 		if(data[lavoratore]['dettaglio'] == null)
-			data[lavoratore]['dettaglio'] = params.dettaglio;
+			data[lavoratore]['dettaglio'] = (params.dettaglio != null ? params.dettaglio : 0);
 		
 		if(data[lavoratore]['terminato'] == null)
 			data[lavoratore]['terminato'] = (params.terminato != null ? params.terminato : 1);
