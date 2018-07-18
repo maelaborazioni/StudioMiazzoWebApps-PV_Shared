@@ -210,7 +210,7 @@ function getAvailableRequestsWithRules(companyID, employeeID, periodo, categoryI
  */
 function getUsedRequests(companyID, periodo, categoryID, codGruppoLavoratori)
 {
-	/** @type {JSFoundset<db:/ma_richieste/lavoratori_richieste>} */
+	/** @type {JSFoundSet<db:/ma_richieste/lavoratori_richieste>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.LAVORATORI_RICHIESTE);
 	if (fs && fs.find())
 	{
@@ -230,7 +230,7 @@ function getUsedRequests(companyID, periodo, categoryID, codGruppoLavoratori)
  */
 function getUsedRequestsFromTo(companyID, periodoDal, periodoAl, categoryID, codGruppoLavoratori)
 {
-	/** @type {JSFoundset<db:/ma_richieste/lavoratori_richieste>} */
+	/** @type {JSFoundSet<db:/ma_richieste/lavoratori_richieste>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.LAVORATORI_RICHIESTE);
 	if (fs && fs.find())
 	{
@@ -322,14 +322,14 @@ function getRequestForm(params)
 }
 
 /**
- * @return {JSFoundset<db:/ma_richieste/tab_richiestedettagliocampi>}
+ * @return {JSFoundSet<db:/ma_richieste/tab_richiestedettagliocampi>}
  * 
  * @properties={typeid:24,uuid:"B38AB002-EE6F-4872-9014-6E8DF1BA8579"}
  * @AllowToRunInFind
  */
 function getRequestFields(requestid)
 {
-	/** @type {JSFoundset<db:/ma_richieste/tab_richiestedettaglio>} */
+	/** @type {JSFoundSet<db:/ma_richieste/tab_richiestedettaglio>} */
 	var requestFs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.DETTAGLIO_RICHIESTE);
 	if (requestFs && requestFs.find())
 	{
@@ -353,7 +353,7 @@ function getRequestFields(requestid)
  */
 function getRequestType(requestid)
 {
-	/** @type {JSFoundset<db:/ma_richieste/tab_richiestedettaglio>} */
+	/** @type {JSFoundSet<db:/ma_richieste/tab_richiestedettaglio>} */
 	var requestFs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.DETTAGLIO_RICHIESTE);
 	if (requestFs && requestFs.find())
 	{
@@ -438,7 +438,7 @@ function getRequiredFields(specification, programName, params, form)
  */
 function getCurrentData(field, params, argsValues)
 {
-	/** @type {JSFoundset<db:/ma_richieste/tab_richiestedettagliocampi>} */
+	/** @type {JSFoundSet<db:/ma_richieste/tab_richiestedettagliocampi>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.CAMPI_RICHIESTE);
 	if (fs && fs.find())
 	{
@@ -479,7 +479,7 @@ function getCurrentData(field, params, argsValues)
  */
 function getDefaultData(field, idrichiesta, idlavoratore)
 {
-	/** @type {JSFoundset<db:/ma_richieste/tab_richiestedettagliocampi_valoriadipendente>} */
+	/** @type {JSFoundSet<db:/ma_richieste/tab_richiestedettagliocampi_valoriadipendente>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.VALORI_CAMPI_RICHIESTE);
 	if (fs && fs.find())
 	{
@@ -771,7 +771,7 @@ function checkForUpdatedRequests()
  */
 function getUpdatedRequestsFoundSet()
 {
-	/** @type {JSFoundset<db:/ma_richieste/lavoratori_richieste>} */
+	/** @type {JSFoundSet<db:/ma_richieste/lavoratori_richieste>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.LAVORATORI_RICHIESTE);
 	
 	fs.addFoundSetFilterParam('aggiornatosede', globals.ComparisonOperator.EQ, globals.TRUE);
@@ -790,7 +790,7 @@ function getUpdatedRequestsFoundSet()
  */
 function isUpdated(requestid, checkRemotely)
 {
-	/** @type {JSFoundset<db:/ma_richieste/lavoratori_richieste>} */
+	/** @type {JSFoundSet<db:/ma_richieste/lavoratori_richieste>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.LAVORATORI_RICHIESTE);
 		
 	if(!fs.loadRecords(requestid))
@@ -835,7 +835,7 @@ function isUpdated(requestid, checkRemotely)
  */
 function getDisabledRules(companyid, employeesid, periodo)
 {
-	/** @type {JSFoundset<db:/ma_richieste/lavoratori_richieste>} */
+	/** @type {JSFoundSet<db:/ma_richieste/lavoratori_richieste>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.LAVORATORI_RICHIESTE);
 	if (fs && fs.find())
 	{

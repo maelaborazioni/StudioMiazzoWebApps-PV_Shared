@@ -205,7 +205,7 @@ function onDataChangeCodRichiesta(oldValue, newValue, event)
 		return true;
 	}
 		
-	/** @type {JSFoundset<db:/ma_richieste/tab_richiestedettaglio>} */
+	/** @type {JSFoundSet<db:/ma_richieste/tab_richiestedettaglio>} */
 	var requestDetailFs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.DETTAGLIO_RICHIESTE);
 		requestDetailFs = filterRequest(requestDetailFs);
 		
@@ -326,7 +326,7 @@ function onDataChangeCodRegola(oldValue, newValue, event)
 		return true;
 	}
 	
-	/** @type {JSFoundset<db:/ma_richieste/tab_richiestedettaglio>} */
+	/** @type {JSFoundSet<db:/ma_richieste/tab_richiestedettaglio>} */
 	var ruleFs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.DETTAGLIO_RICHIESTE);
 	if (ruleFs && ruleFs.find())
 	{

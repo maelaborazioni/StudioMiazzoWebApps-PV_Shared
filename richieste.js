@@ -121,7 +121,7 @@ function getRequestsToSend(idDitta)
 {
 	var arrRequestsToSend = [];
 	
-	/** @type {JSFoundset<db:/ma_richieste/lavoratori_richieste>}*/
+	/** @type {JSFoundSet<db:/ma_richieste/lavoratori_richieste>}*/
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE,globals.Table.LAVORATORI_RICHIESTE);
 	var ultimoCedolinoStampato = globals.ma_utl_getUltimoCedolinoStampato(idDitta);
 	
@@ -163,7 +163,7 @@ function getRequestsSent(idDitta,periodoCedolino)
 {
 	var arrRequestsSent = [];
 	
-	/** @type {JSFoundset<db:/ma_richieste/lavoratori_richieste>}*/
+	/** @type {JSFoundSet<db:/ma_richieste/lavoratori_richieste>}*/
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE,globals.Table.LAVORATORI_RICHIESTE);
 	
 	if(fs && fs.find())

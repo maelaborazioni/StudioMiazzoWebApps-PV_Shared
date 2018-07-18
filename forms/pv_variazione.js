@@ -781,7 +781,7 @@ function setRequiredFields(specification, programName, params, form)
  */
 function setBodyElements(form, params, layoutParams, multiple)
 {
-	/** @type {JSFoundset<db:/ma_richieste/tab_richiestedettaglio>} */
+	/** @type {JSFoundSet<db:/ma_richieste/tab_richiestedettaglio>} */
 	var fs = databaseManager.getFoundSet(globals.Server.MA_RICHIESTE, globals.Table.DETTAGLIO_RICHIESTE);
 	if(fs.metodoinizializzazione && fs.loadRecords(params.requestid))
 	{
@@ -982,7 +982,7 @@ function getData(specification, params, data)
 }
 
 /**
- * @return {JSFoundset<db:/ma_richieste/tab_richiestedettagliocampi>}
+ * @return {JSFoundSet<db:/ma_richieste/tab_richiestedettagliocampi>}
  * 
  * @properties={typeid:24,uuid:"D43C3350-D3D0-4020-B513-A4E1C8F50DA7"}
  */
