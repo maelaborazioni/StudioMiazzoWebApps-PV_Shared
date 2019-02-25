@@ -903,3 +903,31 @@ function getStatusCode(status_id)
 	return null;
 }
 
+/**
+ * @AllowToRunInFind
+ * 
+ * @param idLavoratore
+ * @param idTabRichiestaDettaglio
+ * @param periodo
+ * 
+ * @return {JSRecord<db:/ma_richieste/lavoratori_richieste>}
+ * 
+ * @properties={typeid:24,uuid:"FFCDEA90-3825-445D-8D05-6E43FE13AF19"}
+ */
+function getEmployeeRequest(idLavoratore, idTabRichiestaDettaglio, periodo)
+{
+	var fs = datasources.db.ma_richieste.lavoratori_richieste.getFoundSet();
+	if(fs && fs.find())
+	{
+		fs.idlavoratore = globals.convert_LavoratoriCliente2Sede(idLavoratore);
+		fs.idtabrichiestadettaglio = idTabRichiestaDettaglio;
+		fs.periodocedolino = periodo;
+		
+		fs.search();
+		
+		return fs.getRecord(1);
+	}
+	
+	return null;
+}
+
