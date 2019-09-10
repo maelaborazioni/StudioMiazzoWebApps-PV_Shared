@@ -847,7 +847,12 @@ function getDisabledRules(companyid, employeesid, periodo)
 			employeesid = employeesid.map(function(id){ return globals.ma_utl_lav_convertId(id); });
 		
 		if(!globals.ma_utl_hasKeySede())
+		{
+			if(globals.ma_utl_hasKey(globals.Key.PANNELLO_VARIAZIONI_FILTRO_UTENTE))
+				   fs.richiesta_utente = globals.getUserName(globals.svy_sec_lgn_user_id);
+			
 			fs.owner_id			   = globals.svy_sec_lgn_owner_id;
+		}
 		
 		fs.idditta                 = globals.ma_utl_ditta_toSede(companyid);
 		fs.idlavoratore			   = employeesid
@@ -931,3 +936,113 @@ function getEmployeeRequest(idLavoratore, idTabRichiestaDettaglio, periodo)
 	return null;
 }
 
+/**
+ * @param {Number} idDitta
+ * @param {Number} periodo
+ * @param {Number} idWelfareDittaTracciato
+ * @param {Number} idWelfareTipoPiano
+ * @param {Number} annoContabile
+ * @param {String} fileId
+ * @param {Array<Number>} [arrIdLavoratoriRichiesteDaEscludere]
+ *
+ * @properties={typeid:24,uuid:"DEE406CA-60AD-4B2D-AE8D-5B49F2E93111"}
+ */
+function inizializzaParametriFileTracciatoWelfareImportazione(idDitta,periodo,idWelfareDittaTracciato,idWelfareTipoPiano,
+	                                                          annoContabile,fileId,arrIdLavoratoriRichiesteDaEscludere)
+{
+	var objParams = 
+	{
+		userid                 : security.getUserName(), 
+		clientid               : security.getClientID(),
+		idditta 				: idDitta,
+		codiceditta 			: globals.getCodDitta(idDitta),
+		iddipendenti 			: [-1],
+		periodo 				: periodo,
+		idwelfaredittatracciato : idWelfareDittaTracciato,
+		idwelfaretipopiano      : idWelfareTipoPiano,
+		annocontabile           : annoContabile,
+		fileid                  : fileId,
+		username                : globals.getUserName(user_id),
+		ownerid                 : owner_id		
+   }
+   
+   if(arrIdLavoratoriRichiesteDaEscludere && arrIdLavoratoriRichiesteDaEscludere.length)
+      objParams.idlavoratoririchieste = arrIdLavoratoriRichiesteDaEscludere;
+
+	return objParams; 
+}
+
+/**
+ * Lancia l'operazione lunga di acquisizione delle voci monetarie da un file tracciato esterno
+ * 
+ * @param {Number} idDitta
+ * @param {Number} periodo
+ * @param {Number} idWelfareDittaTracciato
+ * @param {Number} idWelfareTipoPiano
+ * @param {Number} annoContabile
+ * @param {String} fileId
+ * @param {Array<Number>} [arrIdLavoratoriRichiesteDaEscludere]
+ *
+ * @properties={typeid:24,uuid:"117B4E73-ECA7-436A-A6F1-F05819ED65AF"}
+ */
+function importaTracciatoWelfareDaFileEsterno(idDitta,periodo,idWelfareDittaTracciato,idWelfareTipoPiano,
+	                                          annoContabile,fileId, arrIdLavoratoriRichiesteDaEscludere)
+{
+	// formattazione array per metodo vb6 con indice che parte da 1
+	var arrIdLavoratoriRichiesteDaEscludereFormat = [];
+	if(arrIdLavoratoriRichiesteDaEscludere && arrIdLavoratoriRichiesteDaEscludere.length) 
+	{
+		arrIdLavoratoriRichiesteDaEscludereFormat.push(-1);
+		for(var i = 0; i < arrIdLavoratoriRichiesteDaEscludere.length; i++)
+			arrIdLavoratoriRichiesteDaEscludereFormat.push(arrIdLavoratoriRichiesteDaEscludere[i]);
+	}
+															
+	// chiamata al metodo del web service per l'acquisizione del tracciato dalla lettura del file caricato
+	var params = globals.inizializzaParametriFileTracciatoWelfareImportazione(globals.ma_utl_ditta_cliente2Sede(idDitta),
+							                                                  periodo,
+																			  idWelfareDittaTracciato,
+																			  idWelfareTipoPiano,
+																			  annoContabile,
+																			  fileId,
+																			  arrIdLavoratoriRichiesteDaEscludereFormat);
+	var op_values = {
+					 op_ditta : idDitta,
+					 op_progress : 5,
+					 op_periodo : periodo,
+					 op_message : 'Preparazione della chiamata di acquisizione...' 
+					 };
+	
+	var op = scopes.log.GetNewOperation('ITW',op_values);
+	params.operationid = op.op_id;
+	var url = globals.WS_TRACK_EXT_URL + "/Welfare/ImportaTracciatoWelfare";
+
+	globals.addJsonWebServiceJob(url,params,vUpdateOperationStatusFunction);
+}
+
+/**
+ * TODO generated, please specify type and doc for the params
+ * @param idDitta
+ * @param periodo
+ * @param idWelfareDittaTracciato
+ * @param idWelfareTipoPiano
+ * @param annoContabile
+ * @param fileId
+ *
+ * @properties={typeid:24,uuid:"BA69D797-B31A-4C4C-986F-1C4664C5BD09"}
+ */
+function checkTracciatoWelfareDaFileEsterno(idDitta,periodo,idWelfareDittaTracciato,idWelfareTipoPiano,annoContabile,fileId)
+{
+	// chiamata al metodo del web service per la verifica di voci del tracciato già presenti nello storico
+	var params = globals.inizializzaParametriFileTracciatoWelfareImportazione(globals.ma_utl_ditta_cliente2Sede(idDitta),
+							                                                  periodo,
+																			  idWelfareDittaTracciato,
+																			  idWelfareTipoPiano,
+																			  annoContabile,
+																			  fileId);
+	
+	var url = globals.WS_TRACK_EXT_URL + "/Welfare/CheckTracciatoWelfare";
+	
+	var response = globals.getWebServiceResponse(url,params);
+	
+	return response;
+}

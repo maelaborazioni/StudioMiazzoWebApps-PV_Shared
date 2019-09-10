@@ -3,6 +3,7 @@
 	<buildpathentry excluding=".stp/|medias/" kind="src" path=""/>
 	<buildpathentry exported="true" kind="prj" path="/AG_Shared"/>
 	<buildpathentry exported="true" kind="prj" path="/MA_Communications"/>
+	<buildpathentry exported="true" kind="prj" path="/MA_Operations"/>
 	<buildpathentry exported="true" kind="prj" path="/MA_Shared"/>
 	<buildpathentry exported="true" kind="prj" path="/UI_Shared"/>
 	<buildpathentry exported="true" kind="prj" path="/utility"/>
