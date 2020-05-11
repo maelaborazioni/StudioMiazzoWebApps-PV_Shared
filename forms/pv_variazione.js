@@ -197,7 +197,7 @@ function dc_save_pre(fs,detail)
 		if(globals.nav.mode === globals.Status.EDIT || status === globals.Status.EDIT)
 			result = fAggiornaRichiesta(fs, vParams, vParams.callback);
 		
-		return result['returnValue'];
+		return result.returnValue;
 	}
 	
 	return -1;
@@ -247,8 +247,6 @@ function creaRichiestaDetail(fs, params, callback)
 
 /**
  * @return {{ returnValue: Number, [request] }} returnValue = 0 means everything ok, -1 otherwise
- *
- * @protected 
  *
  * @properties={typeid:24,uuid:"D513DA51-3CE4-4432-8863-673239A0D16A"}
  */
@@ -333,10 +331,8 @@ function createRequestForm(params, multiple, extendsForm, formName, data, layout
 	
 	layoutParams = layoutParams || getLayoutParams(multiple);
 	formName 	 = formName 	|| ['form', params.requestcode + '_' + params.rulecode, multiple ? 'tbl' : 'dtl'].join('_');
-	
 	var form = buildRequestForm(specification, params, multiple, formName, extendsForm, layoutParams);
-		form = populateRequestForm(form, specification, params, data);
-		
+	form = populateRequestForm(form, specification, params, data);
 	forms[form.name]['vParams'] = params;
 	forms[form.name]['vClose' ] = false;
 
@@ -344,7 +340,7 @@ function createRequestForm(params, multiple, extendsForm, formName, data, layout
 }
 
 /**
- * @param 			params
+ * @param params
  * @param {Boolean}	multiple
  * @param {Form}	[extendsForm]
  * @param {String}	[formName]
@@ -504,24 +500,86 @@ function getSpecification(params)
 	var specification = globals.getRequestForm(params);
 	if (specification)
 	{
-		specification.forEach(function(field){
+		
+		specification.forEach(function(_field){
+			/** @type {
+			 * 			{ 
+			 * 				Code: String, 
+			 * 				Name: String, 
+			 * 				Format: String, 
+			 * 				Size: Number, 
+			 * 				Lines: Number, 
+			 * 				Enabled: Boolean, 
+			 * 				Visible: Boolean, 
+			 * 				Order: Number, 
+			 * 				Group: Number, 
+			 * 				Type: String, 
+			 * 				DataProvider: String, 
+			 * 				Formula: String, 
+			 * 				DisplayType: Number, 
+			 * 				Regex: String, 
+			 * 				OnAction: { name: String, code: String }, 
+			 * 				LookupParams: String, 
+			 * 				FilterQuery: String, 
+			 * 				FilterArgs: String,
+			 * 				Relation: String,
+			 * 				ShownDataProvider: String, 
+			 *              Tooltip: String,
+			 *              HasDefault: Boolean,
+			 *              DependsOn: String,
+			 *              ContentDataProvider: String,
+			 *              ShowCurrentValue : Boolean
+			 * 			}
+			 * 		} 
+			 */
+			var field = _field;
 			// The field needs the current value to be displayed
-			if(field.showcurrentvalue)
+			if(field.ShowCurrentValue)
 			{
+				/** @type{
+				     *        {  
+				 	 * 				Code: String, 
+					 * 				Name: String, 
+					 * 				Format: String, 
+					 * 				Size: Number, 
+					 * 				Lines: Number, 
+					 * 				Enabled: Boolean, 
+					 * 				Visible: Boolean, 
+					 * 				Order: Number, 
+					 * 				Group: Number, 
+					 * 				Type: String, 
+					 * 				DataProvider: String, 
+					 * 				Formula: String, 
+					 * 				DisplayType: Number, 
+					 * 				Regex: String, 
+					 * 				OnAction: { name: String, code: String }, 
+					 * 				LookupParams: String, 
+					 * 				FilterQuery: String, 
+					 * 				FilterArgs: String,
+					 * 				Relation: String,
+					 * 				ShownDataProvider: String, 
+					 *              Tooltip: String,
+					 *              HasDefault: Boolean,
+					 *              DependsOn: String,
+					 *              ContentDataProvider: String,
+					 *              ShowCurrentValue : Boolean
+					 * 			}
+					 * }
+					 */
 				var auxField 			     = globals.clone(field);
-					auxField['dataprovider'] += '_oldvalue';
-					auxField['name']		 += ' (v)';
-					auxField.enabled         = false;
-					auxField.onrender	     = false;
-					auxField.isCurrentValue  = true;
-					auxField.tooltip         = 'Valore corrente'
+					auxField.DataProvider    += '_oldvalue';
+					auxField.Name  		     += ' (v)';
+					auxField.Enabled         = false;
+					auxField.OnRender	     = false;
+					auxField.IsCurrentValue  = true;
+					auxField.Tooltip         = 'Valore corrente'
 						
 				// Move the original field on the next row
-				field.group += 1;
+				field.Group += 1;
 						
-				if(field.relation)
+				if(field.Relation)
 				{
-					var relObject = plugins.serialize.fromJSON(field.relation);
+					var relObject = plugins.serialize.fromJSON(field.Relation);
 					if (relObject)
 					{
 						relObject.name += '_oldvalue';
@@ -531,7 +589,7 @@ function getSpecification(params)
 						});
 						
 						// Remove leading underscores put in by the plugin
-						auxField.relation = plugins.serialize.toJSON(relObject).replace(/_([a-zA-Z]+)(\\?":)/g, '$1$2');
+						auxField.Relation = plugins.serialize.toJSON(relObject).replace(/_([a-zA-Z]+)(\\?":)/g, '$1$2');
 					}
 				}
 				
@@ -566,14 +624,45 @@ function getFieldsToCopyBetweenRecords(params, specification)
 	
 	specification.forEach
 	(
-		function(field)
+		function(_field)
 		{
-			if(!field.dependson && !field.isCurrentValue && field.visible && field.enabled)
+			/** @type {
+			 * 			{ 
+			 * 				Code: String, 
+			 * 				Name: String, 
+			 * 				Format: String, 
+			 * 				Size: Number, 
+			 * 				Lines: Number, 
+			 * 				Enabled: Boolean, 
+			 * 				Visible: Boolean, 
+			 * 				Order: Number, 
+			 * 				Group: Number, 
+			 * 				Type: String, 
+			 * 				DataProvider: String, 
+			 * 				Formula: String, 
+			 * 				DisplayType: Number, 
+			 * 				Regex: String, 
+			 * 				OnAction: { name: String, code: String }, 
+			 * 				LookupParams: String, 
+			 * 				FilterQuery: String, 
+			 * 				FilterArgs: String,
+			 * 				Relation: String,
+			 * 				ShownDataProvider: String, 
+			 *              Tooltip: String,
+			 *              HasDefault: Boolean,
+			 *              DependsOn: String,
+			 *              ContentDataProvider: String,
+			 *              IsCurrentValue : Boolean 
+			 * 			}
+			 * 		} 
+			 */
+			 var field = _field;
+			if(!field.DependsOn && !field.IsCurrentValue && field.Visible && field.Enabled)
 			{
-				fieldsToCopy.push(field.dataprovider);
-				fieldsToSave.push(field.dataprovider);
-				if(field.hasdefault)
-					fieldsToCopy.push(field.dataprovider + '_setdefault');
+				fieldsToCopy.push(field.DataProvider);
+				fieldsToSave.push(field.DataProvider);
+				if(field.HasDefault)
+					fieldsToCopy.push(field.DataProvider + '_setdefault');
 			}
 		}
 	);
@@ -677,19 +766,48 @@ function setCalculations(dataSource, specification, params)
 {
 	for (var f in specification)
 	{
+		/** @type {
+		 * 			{ 
+		 * 				Code: String, 
+		 * 				Name: String, 
+		 * 				Format: String, 
+		 * 				Size: Number, 
+		 * 				Lines: Number, 
+		 * 				Enabled: Boolean, 
+		 * 				Visible: Boolean, 
+		 * 				Order: Number, 
+		 * 				Group: Number, 
+		 * 				Type: String, 
+		 * 				DataProvider: String, 
+		 * 				Formula: String, 
+		 * 				DisplayType: Number, 
+		 * 				Regex: String, 
+		 * 				OnAction: { name: String, code: String }, 
+		 * 				LookupParams: String, 
+		 * 				FilterQuery: String, 
+		 * 				FilterArgs: String,
+		 * 				Relation: String,
+		 * 				ShownDataProvider: String, 
+		 *              Tooltip: String,
+		 *              HasDefault: Boolean,
+		 *              DependsOn: String,
+		 *              ContentDataProvider: String
+		 * 			}
+		 * 		} 
+		 */
 		var field = specification[f];
 		
 		// If computed, create a new calculation
-		switch(field.displaytype)
+		switch(field.DisplayType)
 		{
-			case globals.DisplayType.COMPUTED:
-				var calc = solutionModel.getDataSourceNode(dataSource).getCalculation(field.dataprovider); 
+			case scopes.richieste.DisplayType.COMPUTED:
+				var calc = solutionModel.getDataSourceNode(dataSource).getCalculation(field.DataProvider); 
 				if(!calc)
 					solutionModel.getDataSourceNode(dataSource).newCalculation
 					(
-						  "function " + field.dataprovider + "()\
+						  "function " + field.DataProvider + "()\
 						   {\
-						   		return " + field.formula + ";\
+						   		return " + field.Formula + ";\
 						   }"
 					);
 				
@@ -719,12 +837,42 @@ function setRelations(dataSource, specification, params)
 	{
 		specification.forEach
 		(
-			function(field)
+			function(_field)
 			{
+				/** @type {
+				 * 			{ 
+				 * 				Code: String, 
+				 * 				Name: String, 
+				 * 				Format: String, 
+				 * 				Size: Number, 
+				 * 				Lines: Number, 
+				 * 				Enabled: Boolean, 
+				 * 				Visible: Boolean, 
+				 * 				Order: Number, 
+				 * 				Group: Number, 
+				 * 				Type: String, 
+				 * 				DataProvider: String, 
+				 * 				Formula: String, 
+				 * 				DisplayType: Number, 
+				 * 				Regex: String, 
+				 * 				OnAction: { name: String, code: String }, 
+				 * 				LookupParams: String, 
+				 * 				FilterQuery: String, 
+				 * 				FilterArgs: String,
+				 * 				Relation: String,
+				 * 				ShownDataProvider: String, 
+				 *              Tooltip: String,
+				 *              HasDefault: Boolean,
+				 *              DependsOn: String,
+				 *              ContentDataProvider: String
+				 * 			}
+				 * 		} 
+				 */
+				var field = _field;
 				// It the field is related, create a new relation for it
-				if (field.relation)
+				if (field.Relation)
 				{
-					var relObject = plugins.serialize.fromJSON(field.relation);
+					var relObject = plugins.serialize.fromJSON(field.Relation);
 					if (relObject)
 					{
 						var relName = params.datasource + '_' + relObject.name;
@@ -745,7 +893,7 @@ function setRelations(dataSource, specification, params)
 								{
 									rel.newRelationItem
 									(
-										  item.parentDataProvider || field.dataprovider
+										  item.parentDataProvider || field.DataProvider
 										, item.comparisonOperator
 										, item.childDataProvider
 									)
@@ -891,16 +1039,46 @@ function getFormDataSet(specification, params)
 	{
 		specification.forEach
 		(
-			function(field)
+			function(_field)
 			{
-				if(!field.dependson)
+				/** @type {
+				 * 			{ 
+				 * 				Code: String, 
+				 * 				Name: String, 
+				 * 				Format: String, 
+				 * 				Size: Number, 
+				 * 				Lines: Number, 
+				 * 				Enabled: Boolean, 
+				 * 				Visible: Boolean, 
+				 * 				Order: Number, 
+				 * 				Group: Number, 
+				 * 				Type: String, 
+				 * 				DataProvider: String, 
+				 * 				Formula: String, 
+				 * 				DisplayType: Number, 
+				 * 				Regex: String, 
+				 * 				OnAction: { name: String, code: String }, 
+				 * 				LookupParams: String, 
+				 * 				FilterQuery: String, 
+				 * 				FilterArgs: String,
+				 * 				Relation: String,
+				 * 				ShownDataProvider: String, 
+				 *              Tooltip: String,
+				 *              HasDefault: Boolean,
+				 *              DependsOn: String,
+				 *              ContentDataProvider: String
+				 * 			}
+				 * 		} 
+				 */
+				var field = _field;
+				if(!field.DependsOn)
 				{
-					columns.push(field.dataprovider);
-					types.push(globals.fieldTypeToJSColumn(field.type));
+					columns.push(field.DataProvider);
+					types.push(globals.fieldTypeToJSColumn(field.Type));
 					
-					if(field.hasdefault)
+					if(field.HasDefault)
 					{
-						columns.push(field.dataprovider + '_setdefault');
+						columns.push(field.DataProvider + '_setdefault');
 						types.push(JSColumn.INTEGER);
 					}
 				}
@@ -942,38 +1120,69 @@ function getData(specification, params, data)
 		if(data[lavoratore]['terminato'] == null)
 			data[lavoratore]['terminato'] = (params.terminato != null ? params.terminato : 1);
 		
-		specification.forEach(function(field){
-			if(!field.dependson)
+		specification.forEach(function(_field){
+			/** @type {
+			 * 			{ 
+			 * 				Code: String, 
+			 * 				Name: String, 
+			 * 				Format: String, 
+			 * 				Size: Number, 
+			 * 				Lines: Number, 
+			 * 				Enabled: Boolean, 
+			 * 				Visible: Boolean, 
+			 * 				Order: Number, 
+			 * 				Group: Number, 
+			 * 				Type: String, 
+			 * 				DataProvider: String, 
+			 * 				Formula: String, 
+			 * 				DisplayType: Number, 
+			 * 				Regex: String, 
+			 * 				OnAction: { name: String, code: String }, 
+			 * 				LookupParams: String, 
+			 * 				FilterQuery: String, 
+			 * 				FilterArgs: String,
+			 * 				Relation: String,
+			 * 				ShownDataProvider: String, 
+			 *              Tooltip: String,
+			 *              HasDefault: Boolean,
+			 *              DependsOn: String,
+			 *              ContentDataProvider: String,
+			 *              IsCurrentValue : Boolean
+			 * 			}
+			 * 		} 
+			 */
+			var field = _field;
+			if(!field.DependsOn)
 			{
 				var value = null;
 				
-				if(field.isCurrentValue)
+				if(field.IsCurrentValue)
 					value = globals.getCurrentData(field, params, { 'idlavoratore': lavoratore, 'alladata': params.decorrenza });
 				else
 				{
-					if(field.hasdefault)
+					if(field.HasDefault)
 						value = globals.getDefaultData(field, params.requestid, globals.ma_utl_lav_convertId(lavoratore));
 					
 					if(globals.ma_utl_isNullOrUndefined(value))
 					{
-						switch(field.displaytype)
+						switch(field.DisplayType)
 						{
-							case globals.DisplayType.FIXED:
-								if(field.type === globals.FieldType.NUMBER)
-									value = globals.ma_utl_parseDecimalString(field.formula);
+							case scopes.richieste.DisplayType.FIXED:
+								if(field.Type === globals.FieldType.NUMBER)
+									value = globals.ma_utl_parseDecimalString(field.Formula);
 								else
-									value = field.formula;
+									value = field.Formula;
 								break;
 								
-							case globals.DisplayType.COMPUTED:
-								value = globals.getDefaultValue(globals.fieldTypeToJSColumn(field.type));
+							case scopes.richieste.DisplayType.COMPUTED:
+								value = globals.getDefaultValue(globals.fieldTypeToJSColumn(field.Type));
 								break;
 						}
 					}
 				}
 				
-				if(!data[lavoratore][field.dataprovider])
-					data[lavoratore][field.dataprovider] = value;
+				if(!data[lavoratore][field.DataProvider])
+					data[lavoratore][field.DataProvider] = value;
 			}
 		});
 	}
@@ -1272,14 +1481,14 @@ function validateRequiredFieldsVociMulti(fs,params)
 		var record 		   = editedRecords[r];
 		if (record.getChangedData().getMaxRowIndex() > 0)
 		{
-			var specification = params['rulesObject'].rulesSpecification[record['idregola']];
+			var specification = params['rulesObject'].RulesSpecification[record['idregola']];
 			for(var f in specification)
 			{
-				if(specification[f].hasdefault || (specification[f].enabled && !specification[f].dependson))
-				   if(record[specification[f].dataprovider] == null)
+				if(specification[f].HasDefault || (specification[f].Enabled && !specification[f].DependsOn))
+				   if(record[specification[f].DataProvider] == null)
 				   {
 						 //field is not entered
-						msg += specification[f].dataprovider + i18n.getI18NMessage('svy.fr.dlg.is_required');
+						msg += specification[f].DataProvider + i18n.getI18NMessage('svy.fr.dlg.is_required');
 						error = found = true;
 						break;
 				   }

@@ -1,4 +1,15 @@
 /**
+ * @properties={typeid:35,uuid:"E5D4EB39-D473-4310-BF83-FDDA415FB141",variableType:-4}
+ */
+var DisplayType = 
+{
+	STANDARD  : 0,
+	FIXED	  : 1,
+	COMPUTED  : 2,
+	MANDATORY : 3
+};
+
+/**
  * @AllowToRunInFind
  * 
  * @param {Array<JSRecord<db:/ma_richieste/lavoratori_richieste>>} requests
