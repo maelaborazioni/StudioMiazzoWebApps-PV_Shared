@@ -2338,6 +2338,21 @@ function getWebServiceVariationResponse(url,params)
  * @param {String} url
  * @param params
  *
+ * @return {{ReturnValue: Object, StatusCode: Number, Message: String, RulesPerEmployee : Object, RulesSpecification : Object}}
+ * 
+ * @properties={typeid:24,uuid:"4A2A7F19-E99C-43B6-839C-DC16C65E8373"}
+ */
+function getWebServiceRuleVariationResponse(url,params)
+{
+	/** @type {{ReturnValue: Object, StatusCode: Number, Message: String, RulesPerEmployee : Object, RulesSpecification : Object}} */
+	var response = globals.getWebServiceResponse(url,params);
+	return response;
+}
+
+/**
+ * @param {String} url
+ * @param params
+ *
  * @return {{ReturnValue: Object, StatusCode: Number, Message: String, Fields : Object}}
  * 
  * @properties={typeid:24,uuid:"05D6FD7B-0C91-4A18-AA3A-4F2B79059B1D"}
