@@ -53,7 +53,7 @@ var TipoStatoInserimento =
  */
 var PV_Controllers =
 {
-	BASE       : 'Request32',
+	BASE       : 'Variation32',
 	FORM       : 'Form32',
 	FILTER     : 'Filter32'
 };
@@ -1029,7 +1029,7 @@ function importaTracciatoWelfareDaFileEsterno(idDitta,periodo,idWelfareDittaTrac
 	
 	var op = scopes.operation.getNewOperation('ITW',op_values);
 	params.operationid = op.op_id;
-	var url = globals.WS_CALENDAR + "/Welfare32/ImportaTracciatoWelfareAsync";
+	var url = globals.WS_CALENDAR + "/Welfare32/ImportWelfareTrackAsync";
 
 	globals.addJsonWebServiceJob(url,params,vUpdateOperationStatusFunction);
 }
@@ -1055,7 +1055,7 @@ function checkTracciatoWelfareDaFileEsterno(idDitta,periodo,idWelfareDittaTracci
 																			  annoContabile,
 																			  fileId);
 	
-	var url = globals.WS_CALENDAR + "/Welfare32/CheckTracciatoWelfare";
+	var url = globals.WS_CALENDAR + "/Welfare32/CheckWelfareTrack";
 	
 	var response = globals.getWebServiceResponse(url,params);
 	
